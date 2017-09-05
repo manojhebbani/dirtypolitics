@@ -1,6 +1,19 @@
-var http = require('http');
-var port = process.env.PORT || 3000;
-http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Hello World!');
-}).listen(port);
+const express = require("express");
+const hbs = require("hbs");
+
+
+const port = process.env.PORT || 3000;
+var app = express();
+
+app.set('view engine','hbs');
+app.use( express.static( __dirname + '/public' ) );
+
+hbs.registerPartials( __dirname + '/views/partials');
+
+app.get('/',(req,res)=>{
+  res.render('posts.hbs',{
+    page : 'posts'
+  });
+});
+
+app.listen(port);
