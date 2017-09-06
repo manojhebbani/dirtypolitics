@@ -13,7 +13,7 @@ hbs.registerPartials( __dirname + '/views/partials');
 //var posts = require('./models/posts');
 
   app.get('/',(req,res)=>{
-    res.render(process.env);
+    res.send(process.env);
   });
   app.listen(port);
 
