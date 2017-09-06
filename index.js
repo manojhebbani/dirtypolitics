@@ -9,18 +9,23 @@ app.use( express.static( __dirname + '/public' ) );
 
 hbs.registerPartials( __dirname + '/views/partials');
 
-var mongoose = require("./db/mongoose");
-var posts = require('./models/posts');
+//var mongoose = require("./db/mongoose");
+//var posts = require('./models/posts');
 
-posts.find().then((posts)=>{
   app.get('/',(req,res)=>{
-    res.render('posts.hbs',{
-      page  : 'posts',
-      title : 'Dirty Politics',
-      posts   : posts
-    });
+    res.render(process.env.MONGODB_URL);
   });
   app.listen(port);
-},(e)=>{
-  console.log(e);
-});
+
+// posts.find().then((posts)=>{
+//   app.get('/',(req,res)=>{
+//     res.render('posts.hbs',{
+//       page  : 'posts',
+//       title : 'Dirty Politics',
+//       posts   : posts
+//     });
+//   });
+//   app.listen(port);
+// },(e)=>{
+//   console.log(e);
+// });
