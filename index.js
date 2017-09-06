@@ -13,7 +13,7 @@ hbs.registerPartials( __dirname + '/views/partials');
 //var posts = require('./models/posts');
 
   app.get('/',(req,res)=>{
-    res.render(process.env.MONGODB_URL);
+    res.render(process.env);
   });
   app.listen(port);
 
