@@ -18,14 +18,8 @@ var conn = mysql.createConnection({
 
 conn.connect(function(err) {
   if (err) throw err;
-  console.log("Connected!");
-});
-
-app.get('/',(req,res)=>{
-  res.render('posts.hbs',{
-    page  : 'posts',
-    title : 'Dirty Politics',
-    posts   : posts
+  app.get('/',(req,res)=>{
+    res.send('posts.hbs');
   });
+  app.listen(port);
 });
-app.listen(port);
